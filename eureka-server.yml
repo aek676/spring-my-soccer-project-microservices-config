@@ -1,11 +1,49 @@
+spring:
+  application:
+    name: eureka-server
+
 server:
-  port: 8761
+  port: ${SERVER_PORT:8761}
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${EUREKA_INSTANCE_HOSTNAME:localhost}
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
   client:
-    registerWithEureka: false
-    fetchRegistry: false
-    serviceUrl:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+logging:
+  level:
+    com.netflix.eureka: OFF
+    com.netflix.discovery: OFF
+    com.netflix.config: WARN
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+eureka:
+  instance:
+    hostname: eureka-server
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+eureka:
+  instance:
+    hostname: ${HOSTNAME:eureka-server}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
+
+logging:
+  level:
+    root: INFO
