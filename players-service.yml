@@ -42,7 +42,7 @@ spring:
     activate:
       on-profile: local
   datasource:
-    url: jdbc:postgresql://postgres:5432/my_soccer_project
+    url: jdbc:postgresql://postgres:5432/my-soccer-project
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
