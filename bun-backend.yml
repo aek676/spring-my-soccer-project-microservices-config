@@ -28,7 +28,6 @@ spring:
     activate:
       on-profile: prod
   datasource:
-    url: ${MONGO_ATLAS_URI}
     db: my-soccer-project
 
 eureka:
