@@ -6,9 +6,9 @@ spring:
   config:
     activate:
       on-profile: local
-  data:
-    mongodb:
-      uri: mongodb://root:example@mongo:27017/
+  datasource:
+    url: mongodb://root:example@mongo:27017/
+    db: my-soccer-project
 
 eureka:
   instance:
@@ -27,9 +27,9 @@ spring:
   config:
     activate:
       on-profile: prod
-  data:
-    mongodb:
-      uri: ${MONGO_ATLAS_URI}
+  datasource:
+    url: ${MONGO_ATLAS_URI}
+    db: my-soccer-project
 
 eureka:
   instance:
