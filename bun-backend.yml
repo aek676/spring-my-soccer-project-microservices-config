@@ -33,7 +33,7 @@ spring:
 eureka:
   instance:
     hostname: ${EUREKA_INSTANCE_HOSTNAME:bun-backend}
-    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+    instance-id: ${spring.application.name}:${HOSTNAME}:${server.port}
   client:
     service-url:
       defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
