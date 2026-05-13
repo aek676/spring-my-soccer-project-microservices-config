@@ -1,0 +1,73 @@
+spring:
+  application:
+    name: news-service
+
+eureka:
+  instance:
+    hostname: ${EUREKA_INSTANCE_HOSTNAME:news-service}
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+    git:
+      enabled: true
+    build:
+      enabled: true
+
+info:
+  application:
+    name: ${spring.application.name}
+    description: News Service with CORBA
+
+logging:
+  level:
+    root: INFO
+    com.my.soccer: DEBUG
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+eureka:
+  instance:
+    hostname: news-service
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${HOSTNAME}:${server.port}
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
+
+logging:
+  level:
+    root: WARN
+    com.my.soccer: INFO
