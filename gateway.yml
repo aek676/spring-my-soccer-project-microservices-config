@@ -39,6 +39,9 @@ info:
     name: ${spring.application.name}
     description: Spring Cloud Gateway with Eureka
 
+cors:
+  allowed-origin-patterns: ${CORS_ALLOWED_ORIGIN_PATTERNS:http://localhost:8100}
+
 logging:
   level:
     org.springframework.cloud.gateway: INFO
@@ -57,6 +60,9 @@ eureka:
     service-url:
       defaultZone: http://eureka-server:8761/eureka/
 
+cors:
+  allowed-origin-patterns: http://localhost:8100
+
 logging:
   level:
     root: INFO
@@ -72,6 +78,11 @@ eureka:
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${HOSTNAME}:${server.port}
+
+cors:
+  allowed-origin-patterns: >
+    https://my-soccer-project-494521.web.app,
+    https://my-soccer-project-494521--*.web.app
 
 logging:
   level:
