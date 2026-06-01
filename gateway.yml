@@ -82,7 +82,9 @@ eureka:
 cors:
   allowed-origin-patterns: >
     https://my-soccer-project-494521.web.app,
-    https://my-soccer-project-494521--*.web.app
+    https://my-soccer-project-494521--*.web.app,
+    capacitor://localhost,
+    https://localhost
 
 logging:
   level:
