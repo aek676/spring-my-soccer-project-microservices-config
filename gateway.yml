@@ -40,7 +40,7 @@ info:
     description: Spring Cloud Gateway with Eureka
 
 cors:
-  allowed-origin-patterns: ${CORS_ALLOWED_ORIGIN_PATTERNS:http://localhost:8100}
+  allowed-origin-patterns: ${CORS_ALLOWED_ORIGIN_PATTERNS:http://localhost:8100,http://localhost:3333}
 
 logging:
   level:
@@ -61,7 +61,7 @@ eureka:
       defaultZone: http://eureka-server:8761/eureka/
 
 cors:
-  allowed-origin-patterns: http://localhost:8100
+  allowed-origin-patterns: http://localhost:8100,http://localhost:3333
 
 logging:
   level:
